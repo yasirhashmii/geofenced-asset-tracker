@@ -9,7 +9,7 @@ public class Geofence {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Byte id;
+	private Integer id;
 	
 	@Column(nullable = false)
 	private String name;
@@ -17,11 +17,11 @@ public class Geofence {
 	@Column(columnDefinition = "geometry(POLYGON,4326)")
 	private Polygon boundary;
 
-	public Byte getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Byte id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -40,6 +40,5 @@ public class Geofence {
 	public void setBoundary(Polygon boundary) {
 		this.boundary = boundary;
 	}
-	
 	
 }

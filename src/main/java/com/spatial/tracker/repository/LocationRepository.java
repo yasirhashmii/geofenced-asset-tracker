@@ -1,0 +1,19 @@
+package com.spatial.tracker.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import com.spatial.tracker.entity.Location;
+
+//Links functions written in Postgres here. We use a repository for that.
+@Repository
+public interface LocationRepository extends JpaRepository<Location, Integer> {
+	
+	@Query(value = "select * from insert_asset(:asset_name, :longitude, :latitide", nativeQuery = true)
+	void insertAsset(@Param("asset_name") String asset_name, @Param("longitude") double longitude, @Param("latitude") double latitude);
+	
+	@Query(value = "select * from check_asset_violation(:asset_name, :longitude, :latitide", nativeQuery = true)
+	Boolean checkAssetViolation(@Param("asset_name") String asset_name, @Param("longitude") double longitude, @Param("latitude") double latitude);
+}

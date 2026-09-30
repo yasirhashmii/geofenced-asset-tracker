@@ -1,34 +1,32 @@
 package com.spatial.tracker.entity;
 
 import jakarta.persistence.*;
-
-import java.security.Timestamp;
 import java.time.LocalDateTime;
-
 import org.locationtech.jts.geom.Point;
 
 @Entity
 @Table(name = "location")
 public class Location {
 	
+	//This creates a primary key of Integer data type
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Byte id;
+	private Integer id;
 	
 	@Column(nullable = false)
 	private String asset_name;
 	
-	@Column(columnDefinition = "geometry(POINT, 4326")
+	@Column(columnDefinition = "geometry(POINT, 4326)")
 	private Point coordinates;
 	
-	@Column
+	@Column(name = "recorded_at")
 	private LocalDateTime recorded_at;
 
-	public Byte getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Byte id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
