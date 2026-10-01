@@ -11,9 +11,9 @@ import com.spatial.tracker.entity.Location;
 @Repository
 public interface LocationRepository extends JpaRepository<Location, Integer> {
 	
-	@Query(value = "select * from insert_asset(:asset_name, :longitude, :latitide", nativeQuery = true)
-	void insertAsset(@Param("asset_name") String asset_name, @Param("longitude") double longitude, @Param("latitude") double latitude);
+	@Query(value = "select * from insert_asset(:assetName, :longitude, :latitude)", nativeQuery = true)
+	void insertAsset(@Param("assetName") String assetName, @Param("longitude") double longitude, @Param("latitude") double latitude);
 	
-	@Query(value = "select * from check_asset_violation(:asset_name, :longitude, :latitide", nativeQuery = true)
-	Boolean checkAssetViolation(@Param("asset_name") String asset_name, @Param("longitude") double longitude, @Param("latitude") double latitude);
+	@Query(value = "select * from check_asset_violation(:assetName, :longitude, :latitude)", nativeQuery = true)
+	Boolean checkAssetViolation(@Param("assetName") String assetName, @Param("longitude") double longitude, @Param("latitude") double latitude);
 }
